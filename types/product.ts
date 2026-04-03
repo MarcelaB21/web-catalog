@@ -8,4 +8,5 @@ export interface Product {
   size: string;
   colors: string[];  
   material: string;
+
 }
