@@ -6,6 +6,7 @@ import { featuredProducts } from '@/data/products';
 import ProductImage from '@/components/products/ProductImage';
 import { CONTACT_CONFIG } from '@/components/constants';
 
+
 interface PageProps {
   params: { id: string }; 
 }
@@ -30,17 +31,15 @@ export default function ProductDetailPage({ params }: PageProps) {
         <span className="text-orange-400 font-medium">{product.name}</span>
       </nav>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-      
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-1
         <div className="flex flex-col gap-4">
           <ProductImage
             images={product.images || [product.image]} 
             name={product.name} 
           />
-        </div>
-
-        
-        <div className="flex flex-col gap-y-6">
+         </div> 
+                      
+          <div className="flex flex-col gap-y-6">
           <div className="flex justify-between items-center">
             <span className="bg-orange-950 text-orange-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
               {product.category}
@@ -141,7 +140,7 @@ export default function ProductDetailPage({ params }: PageProps) {
             </ul>
           </div>
         </div>
-        </div>
+       </div>
       </div>
     </main>
   );
