@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'; 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -5,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { featuredProducts } from '@/data/products';
 import ProductImage from '@/components/products/ProductImage';
 import { CONTACT_CONFIG } from '@/components/constants';
+import { useFavorites } from '@/context/FavoritesContext'
 
 
 interface PageProps {
@@ -19,6 +22,9 @@ export default function ProductDetailPage({ params }: PageProps) {
   if (!product) {
     notFound();
   }
+  
+  const { toggleFavorite , isFavorite} = useFavorites();
+  const isFav = isFavorite(product.id);
 
   return (
     
@@ -31,16 +37,18 @@ export default function ProductDetailPage({ params }: PageProps) {
         <span className="text-orange-400 font-medium">{product.name}</span>
       </nav>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-1
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+        
         <div className="flex flex-col gap-4">
           <ProductImage
             images={product.images || [product.image]} 
             name={product.name} 
           />
-         </div> 
+        </div> 
                       
-          <div className="flex flex-col gap-y-6">
-          <div className="flex justify-between items-center">
+       <div className="flex flex-col gap-y-6">
+         <div className="flex justify-between items-center">
             <span className="bg-orange-950 text-orange-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
               {product.category}
             </span>
@@ -111,10 +119,20 @@ export default function ProductDetailPage({ params }: PageProps) {
                 Contactar por WhatsApp
           </Link>
           
-          <button className="w-full py-4 rounded-xl font-bold border border-[#f59e0b] text-[#f59e0b] flex items-center justify-center gap-2 hover:bg-[#f59e0b]/5 transition-all shadow-[0_0_15px_rgba(245,158,11,0.1)]">
-            <span className="text-xl">♡</span>
-              Añadir a favoritos
-          </button>
+
+          <button 
+            onClick={() => toggleFavorite(product)} 
+            className={`w-full py-4 rounded-xl font-bold border flex items-center justify-center gap-2 transition-all shadow-lg ${
+            isFav 
+              ? "bg-orange-500/10 border-orange-500 text-orange-500" 
+              : "border-[#f59e0b] text-[#f59e0b] hover:bg-[#f59e0b]/5 shadow-[0_0_15px_rgba(245,158,11,0.1)]" 
+            } `}
+          >
+            <span className="text-xl">
+              {isFav ? '❤️' : '♡'}
+            </span>
+              {isFav ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+           </button>
           
           <Link href="/catalog" className="text-center text-gray-400 text-sm hover:text-white transition-colors py-2">
             ← Volver al catálogo
