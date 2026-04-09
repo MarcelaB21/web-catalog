@@ -8,6 +8,7 @@ import { featuredProducts } from '@/data/products';
 import ProductImage from '@/components/products/ProductImage';
 import { CONTACT_CONFIG } from '@/components/constants';
 import { useFavorites } from '@/context/FavoritesContext'
+import RelatedProductCard from '@/components/products/RelatedProductCard';
 
 
 interface PageProps {
@@ -26,6 +27,21 @@ export default function ProductDetailPage({ params }: PageProps) {
   const { toggleFavorite , isFavorite} = useFavorites();
   const isFav = isFavorite(product.id);
 
+
+  const sameSubCategory = featuredProducts.filter((p) => 
+    p.subCategory === product.subCategory && p.id !== product.id
+  );
+
+  const sameCategory = featuredProducts.filter((p) => 
+    p.category === product.category && 
+    p.subCategory !== product.subCategory && 
+    p.id !== product.id
+  );
+
+  
+  const relatedProducts = [...sameSubCategory, ...sameCategory].slice(0, 4);
+
+
   return (
     
     <main className="min-h-screen bg-[#020617] text-white p-4 md:p-10 font-sans">
@@ -39,7 +55,7 @@ export default function ProductDetailPage({ params }: PageProps) {
 
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-        
+      
         <div className="flex flex-col gap-4">
           <ProductImage
             images={product.images || [product.image]} 
@@ -47,8 +63,11 @@ export default function ProductDetailPage({ params }: PageProps) {
           />
         </div> 
                       
-       <div className="flex flex-col gap-y-6">
-         <div className="flex justify-between items-center">
+       
+
+        
+        <div className="flex flex-col gap-y-6">
+          <div className="flex justify-between items-center">
             <span className="bg-orange-950 text-orange-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
               {product.category}
             </span>
@@ -118,7 +137,6 @@ export default function ProductDetailPage({ params }: PageProps) {
             <span className="text-xl">💬</span>
                 Contactar por WhatsApp
           </Link>
-          
 
           <button 
             onClick={() => toggleFavorite(product)} 
@@ -133,6 +151,7 @@ export default function ProductDetailPage({ params }: PageProps) {
             </span>
               {isFav ? 'Quitar de favoritos' : 'Añadir a favoritos'}
            </button>
+
           
           <Link href="/catalog" className="text-center text-gray-400 text-sm hover:text-white transition-colors py-2">
             ← Volver al catálogo
@@ -160,6 +179,25 @@ export default function ProductDetailPage({ params }: PageProps) {
         </div>
        </div>
       </div>
+
+      {relatedProducts.length > 0 && (
+        <section className="max-w-7xl mx-auto mt-20 pt-10 border-t border-gray-800/50">
+          <div className="flex flex-col items-center mb-10">
+          
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center bg-gradient-to-r from-[#ffea00] to-[#ff4e00] text-transparent bg-clip-text inline-block">
+              Más en {product.category.toLowerCase()}
+            </h2>
+            <div className="h-1 w-20 bg-orange-500 mt-2 rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+            {relatedProducts.map((related) => (
+              <RelatedProductCard key={related.id} product={related} />
+            ))}
+          </div>
+        </section>
+      )}
+      
     </main>
   );
 }

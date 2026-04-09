@@ -1,6 +1,4 @@
-
 "use client";
-
 import Image from "next/image";
 import { Star, Heart,Ruler,Palette} from 'lucide-react';
 import Link from 'next/link';
@@ -16,9 +14,12 @@ export default function ProductCard({ info }: { info: Product }){
 
     return(
         <div className="relative bg-bg-[#0a0f1e] rounded-[24px] border border-gray-800/50 p-4 shadow-2xl group transition-all hover:border-gray-700/50">
+            {info.isFeatured && (
             <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg ">
                 <Star className="w-3 h-3 fill-white" /> DESTACADO
             </div>
+            )}
+
 
             <button 
                 onClick={() => toggleFavorite(info)} 
@@ -28,8 +29,9 @@ export default function ProductCard({ info }: { info: Product }){
                     : 'bg-black/20 text-gray-400 hover:text-red-500' 
                 }`}
             >
-                <Heart className={`w-4 h-4 ${isFav ? 'fill-red-500' : ''}`} /> 
-            </button>
+             <Heart className={`w-4 h-4 ${isFav ? 'fill-red-500' : ''}`} />
+             
+             </button>
 
             <div className="relative w-full aspect-[4/4] rounded-[20px] overflow-hidden mb-4 border border-gray-800/40">
                 <Image 
