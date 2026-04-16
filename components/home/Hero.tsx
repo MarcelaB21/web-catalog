@@ -8,7 +8,7 @@ export default function Hero() {
             
             <div className="relative z-10 flex flex-col items-center">
                 <h1 className="inline-block text-6xl md:text-8xl font-extrabold mb-4 bg-gradient-to-r from-[#ffea00] to-[#ff4e00] text-transparent bg-clip-text pb-2">
-                    Cowboy Studio
+                    Vertex Atelier
                 </h1>
                 
                 <h2 className="text-2xl md:text-4xl text-gray-300 font-medium mb-6">
