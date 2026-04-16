@@ -4,14 +4,14 @@ import Link from 'next/link';
 import { useFavorites } from '@/context/FavoritesContext';
 
 export default function Navbar() {
-    
+    // 2. Traemos la lista de favoritos
     const { favorites } = useFavorites();
 
     return (
     <nav className="bg-[#010318]/85 backdrop-blur-md shadow-lg sticky top-0 z-50">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between px-8 py-4">
             <div className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-                Cowboy Studio
+                Vertex Atelier
             </div>
             <div className="flex items-center gap-12">
                 <div className="flex gap-8 text-sm">
