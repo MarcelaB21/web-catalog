@@ -1,4 +1,3 @@
-"use client";
 
 import React from 'react'; 
 import Image from 'next/image';
@@ -7,25 +6,25 @@ import { notFound } from 'next/navigation';
 import { featuredProducts } from '@/data/products';
 import ProductImage from '@/components/products/ProductImage';
 import { CONTACT_CONFIG } from '@/components/constants';
-import { useFavorites } from '@/context/FavoritesContext'
 import RelatedProductCard from '@/components/products/RelatedProductCard';
+import FavoriteButton from '@/components/products/FavoriteButton'
 
 
 interface PageProps {
   params: { id: string }; 
 }
 
-export default function ProductDetailPage({ params }: PageProps) {
+export default async function ProductDetailPage({ params }: PageProps) {
   
-  const productId = parseInt(params.id);
+  const { id } = await params; 
+  const productId = parseInt(id);
   const product = featuredProducts.find((p) => p.id === productId);
 
   if (!product) {
     notFound();
   }
   
-  const { toggleFavorite , isFavorite} = useFavorites();
-  const isFav = isFavorite(product.id);
+  
 
 
   const sameSubCategory = featuredProducts.filter((p) => 
@@ -138,19 +137,7 @@ export default function ProductDetailPage({ params }: PageProps) {
                 Contactar por WhatsApp
           </Link>
 
-          <button 
-            onClick={() => toggleFavorite(product)} 
-            className={`w-full py-4 rounded-xl font-bold border flex items-center justify-center gap-2 transition-all shadow-lg ${
-            isFav 
-              ? "bg-orange-500/10 border-orange-500 text-orange-500" 
-              : "border-[#f59e0b] text-[#f59e0b] hover:bg-[#f59e0b]/5 shadow-[0_0_15px_rgba(245,158,11,0.1)]" 
-            } `}
-          >
-            <span className="text-xl">
-              {isFav ? '❤️' : '♡'}
-            </span>
-              {isFav ? 'Quitar de favoritos' : 'Añadir a favoritos'}
-           </button>
+          <FavoriteButton product={product}/>
 
           
           <Link href="/catalog" className="text-center text-gray-400 text-sm hover:text-white transition-colors py-2">
@@ -200,4 +187,9 @@ export default function ProductDetailPage({ params }: PageProps) {
       
     </main>
   );
+
+  export async function generateStaticParams() {
+  return featuredProducts.map((product) => ({
+    id: product.id.toString(),
+  }));
 }
