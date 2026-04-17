@@ -187,8 +187,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
       
     </main>
   );
+}
 
-  export async function generateStaticParams() {
+export async function generateStaticParams() {
   return featuredProducts.map((product) => ({
     id: product.id.toString(),
   }));
