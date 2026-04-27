@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html
       lang="en">
-      <body className="antialiased min-h-screen flex flex-col">
+      <body className="antialiased min-h-screen flex flex-col overflow-x-hidden w-full relative">
         <FavoritesProvider>
         <Navbar/>
         <main className="flex-1">
