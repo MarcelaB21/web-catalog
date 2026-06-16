@@ -1,10 +1,12 @@
 "use client";
 
+import { Suspense } from 'react'; 
 import ProductCard from '@/components/products/ProductCard';
 import { CATALOG_CONFIG, CategoryKey } from '@/components/catalog/config';
 import { useCatalogFilters } from '@/hooks/useCatalogFilters';
 
-export default function CatalogPage() {
+
+function CatalogContent() {
   const {
     searchTerm,
     setSearchTerm,
@@ -28,7 +30,7 @@ export default function CatalogPage() {
           </p>
         </div>
 
-        {/* Buscador */}
+        
         <div className="relative mb-8">
           <input
             type="text"
@@ -42,7 +44,7 @@ export default function CatalogPage() {
           </svg>
         </div>
 
-        {/* Filtros de Subcategoría */}
+        
         <div className="flex gap-2.5 mb-10 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-[#1e233d]">
           {config.subcategories.map((sub) => (
             <button
@@ -59,7 +61,7 @@ export default function CatalogPage() {
           ))}
         </div>
 
-        {/* Grilla de Productos */}
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
@@ -75,5 +77,18 @@ export default function CatalogPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+
+export default function CatalogPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#060814] flex items-center justify-center">
+        <p className="text-white text-xl animate-pulse font-sans">Cargando catálogo...</p>
+      </div>
+    }>
+      <CatalogContent />
+    </Suspense>
   );
 }
