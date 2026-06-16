@@ -24,25 +24,25 @@ export default function Navbar() {
               Inicio
             </Link>
             <Link
-              href="/catalog"
+              href="/catalog?category=TODOS"
               className="relative hover:text-orange-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all hover:after:w-full"
             >
               Catálogo
             </Link>
             <Link
-              href="#"
+              href="/catalog?category=ANIME"
               className="relative hover:text-orange-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all hover:after:w-full"
             >
               Anime
             </Link>
             <Link
-              href="#"
+              href="/catalog?category=PELÍCULAS"
               className="relative hover:text-orange-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all hover:after:w-full"
             >
               Películas
             </Link>
             <Link
-              href="#"
+              href="/catalog?category=SERIES"
               className="relative hover:text-orange-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all hover:after:w-full"
             >
               Series
@@ -118,4 +118,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
