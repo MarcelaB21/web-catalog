@@ -15,8 +15,6 @@ const IconTikTok = (props: any) => (
 
 
 
-
-
 const footerLinks=[  
     {
         title: 'Enlaces',
@@ -30,9 +28,9 @@ const footerLinks=[
     {
         title: 'Categorías',
         links: [
-            { name: 'Anime', href: '#' },
-            { name: 'Peliculas', href: '#' },
-            { name: 'Series', href: '#' },
+            { name: 'Anime', href: '/catalog?category=ANIME' },
+            { name: 'Peliculas', href: '/catalog?category=PELÍCULAS' },
+            { name: 'Series', href: '/catalog?category=SERIES' },
         ],
     },
 ]
