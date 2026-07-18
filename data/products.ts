@@ -17,7 +17,7 @@ export const featuredProducts : Product[] = [
         size: "18 cm",
         colors: ["Rojo", "Azul", "Negro", "Gris"],
         material:"PLA" , 
-        subCategory:"Mazinger Z",
+        subCategory:"DBZ",
         isFeatured: false
         
     },
@@ -37,7 +37,7 @@ export const featuredProducts : Product[] = [
         size: "16 cm",
         colors: ["Naranja", "Negro", "Amarillo", "Azul"],
         material:"PLA" , 
-        subCategory:"Naruto",
+        subCategory:"NARUTO",
         isFeatured: false
           
     },
@@ -57,7 +57,7 @@ export const featuredProducts : Product[] = [
         size: "16 cm",
         colors:["Azul Marino", "Blanco", "Gris", "Morado"],
         material:"PLA" , 
-        subCategory:"Naruto",
+        subCategory:"NARUTO",
         isFeatured: true
     },
     {
@@ -76,7 +76,7 @@ export const featuredProducts : Product[] = [
         size: "18 cm",
         colors: ["Blanco Crema", "Rojo", "Naranja", "Gris"],
         material: "PLA", 
-        subCategory:"it",
+        subCategory:"HBO",
         isFeatured: false
     },
     {
@@ -95,7 +95,7 @@ export const featuredProducts : Product[] = [
         size: "17 cm",
         colors: ["Gris Oscuro", "Verde", "Blanco", "Marrón"],
         material: "PLA", 
-        subCategory:"Shingeki no Kyojin",
+        subCategory:"SHINGEKI",
         isFeatured: true
     },
     {
@@ -114,14 +114,14 @@ export const featuredProducts : Product[] = [
         size: "18 cm",
         colors: ["Rojo Granate", "Arena", "Marrón", "Negro"],
         material: "PLA", 
-        subCategory: "Naruto",
+        subCategory: "NARUTO",
         isFeatured: false
     },
     {    
         id: 7,
         name: "Harry Potter ",
         category: "SERIES",
-        subCategory: "Harry Potter",
+        subCategory: "HBO",
         price: "$38", 
         description: "Figura premium esculpida del Niño que Sobrevivió. Presenta a Harry en su túnica de Hogwarts con la icónica bufanda de Gryffindor a rayas rojas y amarillas. Incluye esculpido de alta fidelidad de la cicatriz de rayo y las gafas redondas de vinilo mate, sosteniendo su varita. Estructura compacta y sólida para coleccionistas exigentes.",
         image: "https://res.cloudinary.com/dowfnegc1/image/upload/v1776378034/catalog-products/harry_potter_perfil_frontal_ebz4n7.webp", 
@@ -140,7 +140,7 @@ export const featuredProducts : Product[] = [
         id: 8, 
         name: "The Joker",
         category: "PELÍCULAS",
-        subCategory: "Batman / DC",
+        subCategory: "DC",
         price: "$40", 
         description: "Figura premium esculpida del Príncipe Payaso del Crimen. Presenta al Joker en un estilo chibi de vinilo premium con su traje púrpura profundo y chaleco amarillo. El esculpido de alta fidelidad captura la sonrisa amenazante y el pelo verde detallado. La base de resina de hormigón modelado . Estructura sólida y compleja para coleccionistas exigentes.",
         image: "https://res.cloudinary.com/dowfnegc1/image/upload/v1775962732/catalog-products/joker_perfil_frontal_as02h3.webp", 
@@ -159,7 +159,7 @@ export const featuredProducts : Product[] = [
         id: 9, 
         name: "Spider-Man",
         category: "PELÍCULAS",
-        subCategory: "Marvel / Spider-Man",
+        subCategory: "MARVEL",
         price: "$38", 
         description: "Figura premium esculpida de tu amigable vecino arácnido. Presenta a Spider-Man en una pose dinámica de 'lanzamiento de red', en su traje clásico rojo y azul. El esculpido de alta fidelidad captura las micro-texturas del vinilo mate y los grandes lentes blancos de acrílico. La base de resina de hormigón modelado . Estructura sólida y compacta para coleccionistas exigentes.",
         image: "https://res.cloudinary.com/dowfnegc1/image/upload/v1775962733/catalog-products/spider_man_perfil_frontal_xeooxa.webp", 
@@ -174,5 +174,6 @@ export const featuredProducts : Product[] = [
         material: "PLA / Resina Polystone",
         isFeatured: false 
     }
+
 
 ]

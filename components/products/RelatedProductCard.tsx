@@ -5,7 +5,7 @@ import { Product } from '@/types/product';
 export default function SimpleProductCard({ product }: { product: Product }) {
   return (
     <Link 
-      href={`/product/${product.id}`} 
+      href={`/details/${product.id}`} 
       className="group flex flex-col bg-[#0f172a]/30 rounded-2xl p-3 border border-gray-800/50 hover:border-orange-500/50 transition-all duration-300"
     >
       
